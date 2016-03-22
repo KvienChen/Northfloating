@@ -1,0 +1,12 @@
+[ 2016-03-21T20:02:22+08:00 ] 127.0.0.1 /thinkphp/index.php/Homebroker/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000467s ]
+ERR: 无法加载模块:Homebroker
+
+[ 2016-03-21T20:06:16+08:00 ] 127.0.0.1 /thinkphp/index.php/broker/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000057s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001437s ]
+ERR: 无法加载模块:Broker
+
