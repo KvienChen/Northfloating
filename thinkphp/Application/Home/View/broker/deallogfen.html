@@ -1,0 +1,21 @@
+<table class="table table-bordered table-hover definewidth m10">
+    <thead>
+    <tr>
+        <th>房子名称</th>
+        <th>房子地区</th>
+        <th>租房人</th>
+        <th>带看经纪人</th>
+        <th>房子状态</th>
+    </tr>
+    </thead>
+        <foreach name='arr' item='vo'>
+             <tr>
+                <td>{$vo.h_name}</td>
+                <td>{$vo.roon_qu}</td>
+                <td>{$vo.u_phone}</td>
+                <td>{$vo.b_name}</td>
+                <td>已成交</td>
+            </tr>  
+        </foreach>
+</table>
+<center>{$ajaxpage}</center>

@@ -1,0 +1,35 @@
+<table class="table table-bordered table-hover definewidth m10">
+    <thead>
+    <tr>
+        <th>房源名</th>
+        <th>租房人</th>
+        <th>所处地区</th>
+        <th>状态</th>
+        <th>上传时间</th>
+        <th></th>
+    </tr>
+    </thead>  
+        <foreach name="arr" item='vo'>
+            <tr>
+                <td>{$vo.h_name}</td>
+                <td>{$vo.u_phone}</td>
+                <td>{$vo.a_name}</td>
+                <td>
+                <if condition="$vo.p_status eq 0">
+                    未带看
+                <else />
+                    正在带看中
+                </if>
+                </td>
+                <td>{$vo.post_time}</td>
+                <td>
+                <if condition="$vo.p_status eq 0">
+                    <button class="btn btn-primary" onclick="fun({$vo.p_id});" type="button">带看</button>
+                <else />
+                    <button class="btn btn-primary" type="button">带看</button>&nbsp;&nbsp;<button class="btn btn-primary" onclick="fun2({$vo.p_id});" type="button">取消带看</button>
+                </if>                
+                </td>
+            </tr> 
+        </foreach>  
+</table>
+<center>{$ajaxpage}</center>
