@@ -256,6 +256,18 @@ class MessageController extends Controller {
     }
 
 
+    public function advertisementabout(){
+      //接收id方便查询操作
+      $id = $_GET['id'];
+      //实例化model
+      $data = D("advertisement");
+      $arr = $data->advertisementabout($id);
+      //赋值显示
+      $this->assign("arr",$arr);
+      $this->display("advertisementabout");
+    }
+
+
     /*
     * 首页广告添加（郭旭峰）
     */
@@ -280,6 +292,23 @@ class MessageController extends Controller {
         $this->success("删除成功");
       }else{
         $this->success("删除失败");
+      }
+    }
+
+
+    /*
+    * 广告修改正式功能
+    */
+    public function adversave(){
+      //接收id从而进行按条件查找修改
+      $id = $_POST['id'];
+      //实例化model
+      $data = D("advertisement");
+      $arr = $data->adversave($id);
+      if($arr){
+        $this->success("操作成功");
+      }else{
+        $this->error("操作失败");
       }
     }
 
