@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<?PHP 
+  use yii\helpers\Url;
+?>
 <head>
     <title></title>
     <meta charset="UTF-8">
@@ -12,7 +15,7 @@
     <script type="text/javascript" src="__PUBLIC__/Js/ckform.js"></script>
     <script type="text/javascript" src="__PUBLIC__/Js/common.js"></script>
 
-
+ 
 
     <style type="text/css">
         body {
@@ -34,19 +37,38 @@
 
     </style>
 </head>
-<body background="__PUBLIC__/images/logo_header.png"style="background-repeat:no-repeat;background-position:450px 320px;
-">
+<body>
 <br>
+
 <table class="table table-bordered table-hover definewidth m10">
-    
-<?php foreach($message as $v){?>
-<tr>
-    <td>
-    <h5 style="color: darkorange"><?php echo $v['u_name']; ?><b>登陆时间<?php echo $v['logtime']; ?></b>
-        <b>登陆地点<?php echo $v['lpaddress']; ?></b></h5>
-      <?php }?>
-      </td>
-</tr>
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th>QQ</th>
+        <th>电话</th>
+        <th>负责地区</th>
+        <th>成交记录</th>
+        <th>在职状态</th>
+        <th>好评数</th>
+        <th>差评数</th>
+    </tr>
+    </thead>
+        <tr>
+            <td>{$arr.b_name}</td>
+            <td>{$arr.b_qq}</td>
+            <td>{$arr.b_phone}</td>
+            <td>{$arr.a_name}</td>
+            <td>{$arr.b_deal_num}</td>
+            <td>
+            <if condition="$arr.b_status eq 1">
+                在职
+            <else />
+                不在职
+            </if>
+            </td>
+            <td>{$arr.b_good}</td>
+            <td>{$arr.b_bad}</td>
+        </tr> 
 </table>
 </body>
 </html>

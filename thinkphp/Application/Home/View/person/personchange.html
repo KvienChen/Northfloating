@@ -37,10 +37,11 @@
 <body background="__PUBLIC__/images/logo_header.png"style="background-repeat:no-repeat;background-position:450px 320px;
 ">
 <br>
-&nbsp;&nbsp;&nbsp;
-<a href="{:U('Person/personchange')}">首页</a> > <a href="{:U('Person/personchange')}">人员调用</a>
 <center>
     <form action="{:U('Person/personchange')}" method="post">
+        <table>
+            <tr>
+                <td>
     人员名称:<select name="userid">
         <option>请选择</option>
     <?php foreach ($namelist as $v){?>
@@ -54,6 +55,9 @@
     <?php }?>
 </select>
     <input type="submit" value="修改">
+    </td>
+    </tr>
+    </table>
     </form>
 </center>
 </body>
