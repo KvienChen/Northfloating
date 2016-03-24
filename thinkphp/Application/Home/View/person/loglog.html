@@ -37,11 +37,16 @@
 <body background="__PUBLIC__/images/logo_header.png"style="background-repeat:no-repeat;background-position:450px 320px;
 ">
 <br>
-&nbsp;&nbsp;&nbsp;
-<a href="{:U('Person/loglog')}">首页</a> > <a href="{:U('Person/loglog')}">登陆状态</a>
+<table class="table table-bordered table-hover definewidth m10">
+    
 <?php foreach($message as $v){?>
+<tr>
+    <td>
     <h5 style="color: darkorange"><?php echo $v['u_name']; ?><b>登陆时间<?php echo $v['logtime']; ?></b>
         <b>登陆地点<?php echo $v['lpaddress']; ?></b></h5>
       <?php }?>
+      </td>
+</tr>
+</table>
 </body>
 </html>
