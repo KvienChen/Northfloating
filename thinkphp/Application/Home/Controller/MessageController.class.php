@@ -9,25 +9,191 @@ use Think\Controller;
 */
 
 class MessageController extends Controller {
-    /**
-      *   首页服务表管理
+  /**
+      *   首页服务表管理(显示服务列表)
       **/
     public function service(){
-        echo '首页服务表管理';
+          $data=D("service");
+          $arr=$data->index();
+          //print_r($arr);die;
+          $zongshu=$arr['0'];
+          $xinxi=$arr['1'];
+          //获取当前页
+          $page=$_GET['page']?$_GET['page']:1;
+          //echo $page;
+          
+          //首页
+          $first="<a href='javascript:void(0)' onclick='pag(1)'>首页|</a>";
+          //上一页 
+          if($page-1<1){
+            $a=1;
+          }else{
+            $a=$page-1;
+          }
+          $prev="<a href='javascript:void(0)' onclick='pag($a)'>上一页|</a>";
+          //下一页
+          if($page+1>$zongshu){
+            $b = $zongshu;
+          }else{
+            $b = $page+1;
+          }
+          $next="<a href='javascript:void(0)' onclick='pag($b)'>下一页|</a>";
+          //尾页
+          $last="<a href='javascript:void(0)' onclick='pag($zongshu)'>尾页</a>";
+
+          //返回页数
+          $shu=$first.$prev.$next.$last;
+          //赋值
+          $this->assign("page",$shu);
+          $this->assign("arr",$xinxi);
+          //显示
+          $this->display("index/service");
+    }
+    /*
+    *    服务列表删除
+    *
+    */
+    public function service_del(){
+        $obj = D('Service');
+        $arr = $obj->del();
+        if ($arr) {
+          $this->success('删除成功',U("Message/service"));
+
+        }else{
+          $this->success('删除失败',U("Message/service"));
+        }
+    }
+    /*
+    *    服务列表修改页面
+    *
+    */
+    public function service_update(){
+        $obj = D('Service');
+        $arr = $obj->index();
+        $xinxi=$arr['1'];
+        $this->assign('arr',$xinxi);
+        //print_r($arr);die;
+        $this->display('index/service_update');
+    }
+    /*
+    *   服务表管理修改功能
+    */
+    public function service_update_1(){
+      $id = $_GET['ser_id'];
+      echo $id;
     }
 
+
     /**
-      *   公司信息 (logo  网址 等)
+      *   企业信息 (logo  网址 等)
       **/
     public function firmmessage(){
-    	echo '公司信息 (logo  网址 等)';
+      $obj = D('Service');
+      $arr = $obj->firm_show();
+      $this->assign('arr',$arr);
+      $this->display('index/firmmessage');
+    }
+    /*
+    *   修改企业信息
+    */
+    public function firmmessage_update(){
+      //实例化model
+      $obj = D('service');
+      $arr = $obj->firmmessage_update();
+      //判断是否修改成功
+      if ($arr) {
+         $this->success('修改成功',U("Message/firmmessage"));
+      }else{
+        $this->success('修改失败',U("Message/firmmessage_update"));
+      }
     }
 
     /**
-      *   合作商管理
+      *   合作商管理(显示)
       **/
     public function partner(){
-    	echo '合作商管理';
+          $data=D("service");
+          $arr=$data->partner();
+          //print_r($arr);die;
+          $zongshu=$arr['0'];
+          $xinxi=$arr['1'];
+          //print_r($xinxi);die;
+          //获取当前页
+          $page=$_GET['page']?$_GET['page']:1;
+          //echo $page;
+
+          //首页
+          $first="<a href='javascript:void(0)' onclick='pag(1)'>首页|</a>";
+          //上一页 
+          if($page-1<1){
+            $a=1;
+          }else{
+            $a=$page-1;
+          }
+          $prev="<a href='javascript:void(0)' onclick='pag($a)'>上一页|</a>";
+          //下一页
+          if($page+1>$zongshu){
+            $b = $zongshu;
+          }else{
+            $b = $page+1;
+          }
+          $next="<a href='javascript:void(0)' onclick='pag($b)'>下一页|</a>";
+          //尾页
+          $last="<a href='javascript:void(0)' onclick='pag($zongshu)'>尾页</a>";
+
+          //返回页数
+          $shu=$first.$prev.$next.$last;
+          //赋值
+          $this->assign("page",$shu);
+          $this->assign("arr",$xinxi);
+          //显示
+          $this->display("index/partner");
+    }
+    /*
+    *  合作管理是否显示
+    */
+    public function partner_1(){
+      $obj = D('service');
+      $arr = $obj->partner_1();
+      echo json_encode($arr);
+    }
+
+
+
+     
+     //合作管理修改
+     
+    public function partner_update(){
+      $obj = D('service');
+      $arr = $obj->partner_update();
+      $this->assign('arr',$arr);
+     $this->display('index/partner_update');
+     } 
+
+    /*
+    *  合作管理即点即改(合作公司名称)
+    */
+    public function partner_upda(){
+      $user　= D('service');
+      $arr = $user　->partner_upda();
+      return $arr;
+    }
+
+    /*
+    *合作管理是否删除
+    */
+    public function partner_del(){
+      $obj = D('service');
+      $arr = $obj->partner_del();
+      echo json_encode($arr);
+    }
+    /*
+    *  合作管理删除
+    */
+    public function partner_del1(){
+      $obj = D('service');
+      $arr = $obj->partner_del1();
+      echo json_encode($arr);
     }
 
      /**
