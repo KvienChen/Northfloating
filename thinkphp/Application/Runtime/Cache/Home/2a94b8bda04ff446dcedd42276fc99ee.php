@@ -4,9 +4,9 @@
  <head>
   <title>后台管理系统</title>
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-   <link href="/thinkphp/Public/assets/css/dpl-min.css" rel="stylesheet" type="text/css" />
-  <link href="/thinkphp/Public/assets/css/bui-min.css" rel="stylesheet" type="text/css" />
-   <link href="/thinkphp/Public/assets/css/main-min.css" rel="stylesheet" type="text/css" />
+   <link href="/Public/assets/css/dpl-min.css" rel="stylesheet" type="text/css" />
+  <link href="/Public/assets/css/bui-min.css" rel="stylesheet" type="text/css" />
+   <link href="/Public/assets/css/main-min.css" rel="stylesheet" type="text/css" />
  </head>
  <body>
 
@@ -16,7 +16,7 @@
        <!--<img src="/chinapost/Public/assets/img/top.png">-->
       </div>
 
-    <div class="dl-log">欢迎您，<span class="dl-log-user">root</span><a href="/thinkphp/index.php/Home/Index/log" title="退出系统" class="dl-log-quit">[退出]</a>
+    <div class="dl-log">欢迎您，<span class="dl-log-user">root</span><a class='quit' title="退出系统" class="dl-log-quit">[退出]</a>
     </div>
   </div>
    <div class="content">
@@ -36,10 +36,10 @@
     <ul id="J_NavContent" class="dl-tab-conten">
     </ul>
    </div>
-  <script type="text/javascript" src="/thinkphp/Public/assets/js/jquery-1.8.1.min.js"></script>
-  <script type="text/javascript" src="/thinkphp/Public/assets/js/bui-min.js"></script>
-  <script type="text/javascript" src="/thinkphp/Public/assets/js/common/main-min.js"></script>
-  <script type="text/javascript" src="/thinkphp/Public/assets/js/config-min.js"></script>
+  <script type="text/javascript" src="/Public/assets/js/jquery-1.8.1.min.js"></script>
+  <script type="text/javascript" src="/Public/assets/js/bui-min.js"></script>
+  <script type="text/javascript" src="/Public/assets/js/common/main-min.js"></script>
+  <script type="text/javascript" src="/Public/assets/js/config-min.js"></script>
   <script>
     BUI.use('common/main',function(){
       var config = 
@@ -104,6 +104,12 @@
         modulesConfig : config
       });
     })   ;
+
+$('.quit').click(function(){
+  if(confirm('您确定要退出?')){
+    window.location.href="/index.php/Home/Index/log";
+  }
+})
   </script>
  </body>
 </html>
