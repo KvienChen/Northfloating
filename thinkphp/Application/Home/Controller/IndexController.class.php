@@ -31,17 +31,5 @@ class IndexController extends Controller {
     }
 
 
-   
-     /**
-      *   登录  
-      **/
-    public function log(){
-    	$this->display('add');
-    }
 
-
-
-    public function phone(){
-    	$this->display('login');
-    }
 }
