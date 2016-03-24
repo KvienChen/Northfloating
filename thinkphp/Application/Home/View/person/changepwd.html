@@ -36,13 +36,12 @@
 <body background="__PUBLIC__/images/logo_header.png"style="background-repeat:no-repeat;background-position:450px 320px;
 ">
 <br>
-&nbsp;&nbsp;&nbsp;
-<a href="{:U('Person/pwdchange')}">首页</a> > <a href="{:U('Person/pwdchange')}">修改密码</a>
-    <table>
+    <table class="table table-bordered table-hover definewidth m10">
         <tr>
             <td>新密码：<input type="password" name="newpwd" id="newpwd"></td>
         </tr>
-    </table>
+    <tr>
+        <td>
         <div>
             <font color="red">*</font>手机号码：
         </div>
@@ -57,6 +56,9 @@
             <input id="btnSendCode" type="button" value="发送验证码" onclick="sendMessage()" />
         </div>
 <input type="button" value="提交" id="push">
+</td>
+</tr>
+</table>
     <!--验证码的倒计时-->
 <script type="text/javascript">
     /*-------------------------------------------*/
