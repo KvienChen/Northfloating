@@ -64,4 +64,38 @@
 			//执行删除
 			return $this->Table("advertisement")->where("adv_id=$id")->delete();
 		}
+
+
+		/*
+		*	实现详情修改
+		*/
+		public function advertisementabout($id){
+			return $this->Table("advertisement")->select();
+		}
+
+		public function adversave($id){
+			  //接收表传过来的信息
+		      $adv_name = $_POST['adv_name'];
+		      $adv_title = $_POST['adv_title'];
+		      $adv_start = $_POST['adv_start'];
+		      $adv_end = $_POST['adv_end'];
+		      $adv_del = $_POST['adv_del'];
+		      
+
+		    //图片
+		    $upload = new \Think\Upload();// 实例化上传类
+			$upload->maxSize   =     3145728 ;// 设置附件上传大小
+			$upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+			$upload->rootPath="./";
+			$upload->savePath  =      './Public/Uploads/'; // 设置附件上传目录
+			// 上传文件
+			$info   =   $upload->upload();
+
+			$img=$info['adv_img']['savepath'].$info['adv_img']['savename'];
+			$img2=substr($img,9);
+			$data=array("adv_name"=>$adv_name,"adv_title"=>$adv_title,"adv_img"=>$img2,"adv_start"=>$adv_start,"adv_end"=>$adv_end,"adv_del"=>$adv_del);
+			if($info) {
+				return $this->Table("advertisement")->where("adv_id=$id")->save($data);
+			}
+		}
 	}
