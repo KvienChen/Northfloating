@@ -64,6 +64,62 @@ class PersonController extends Controller {
         }
     }
 
+
+
+    /*
+    *   个人资料管理
+    */
+    public function personabout(){
+        /**接收session用户**/
+            $ses = session('user');
+            $sesname = $ses['u_name'];
+            if($sesname){
+                //实例化model
+                $data = D("personabout");
+                $arr = $data->personabout();
+
+                /*foreach($arr as $key => $v){
+                    $v;
+                }*/
+                $uname = $arr[0]['uname'];
+                $img = $arr[0]['img'];
+                $phone = $arr[0]['phone'];
+                $qq = $arr[0]['qq'];
+                $email = $arr[0]['email'];
+                //判断是否全部存在这些值
+                if($uname&&$img&&$phone&&$qq&&$email){
+                    //赋值然后显示
+                    $this->assign("arr",$arr);
+                    $this->display("completeperson");
+                }else{
+                    //赋值然后显示
+                    $this->assign("arr",$arr);
+                    $this->display("addcompleteperson");
+                }
+
+            }else{
+                echo "<script>alert('加载失败');</script>";
+            }
+    }
+
+
+    /*
+    *   实现信息的完善
+    */
+    public function addpersonabout(){
+        //接收session用户
+        $ses = session('user');
+        $sesname = $ses['u_name'];
+        //实例化model
+        $data = D("personabout");
+        $arr = $data->addpersonabout($sesname);
+        if($arr){
+            $this->success("操作成功",U("Person/personabout"));
+        }else{
+            $this->error("操作存在错误，请您核对信息");
+        }
+    }
+
     /**
      *  人事调动  (超级管理员可以更改后台人员的角色)
      **/
